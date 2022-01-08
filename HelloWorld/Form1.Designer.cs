@@ -38,9 +38,9 @@ namespace HelloWorld
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(107, 158);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(565, 108);
+            this.label1.Size = new System.Drawing.Size(592, 108);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Hello World!";
+            this.label1.Text = "Hello World!!";
             // 
             // Form1
             // 

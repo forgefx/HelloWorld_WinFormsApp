@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HelloWorld_WinFormsApp
+namespace HelloWorld
 {
     static class Program
     {

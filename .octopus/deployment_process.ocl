@@ -2,7 +2,6 @@ step "Write \"Hello World!\"" {
 
     action {
         action_type = "Octopus.Script"
-        is_disabled = true
         properties = {
             Octopus.Action.RunOnServer = "true"
             Octopus.Action.Script.ScriptBody = "Write-Host \"Hello World!\""
@@ -32,7 +31,6 @@ step "Transfer a Package" {
     action {
         action_type = "Octopus.TransferPackage"
         environments = ["Develop"]
-        is_disabled = true
         properties = {
             Octopus.Action.Package.DownloadOnTentacle = "False"
             Octopus.Action.Package.FeedId = "Octopus Server (built-in)"

@@ -25,12 +25,12 @@ step "Write \"Hello World!\"" {
 
 step "Transfer a Package" {
     properties = {
-        Octopus.Action.TargetRoles = "FileServer"
+        Octopus.Action.TargetRoles = "FileServer,PackageDrop,WebServer"
     }
 
     action {
         action_type = "Octopus.TransferPackage"
-        environments = ["Develop"]
+        environments = ["Develop", "Test", "Production"]
         properties = {
             Octopus.Action.Package.DownloadOnTentacle = "False"
             Octopus.Action.Package.FeedId = "Octopus Server (built-in)"

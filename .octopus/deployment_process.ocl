@@ -1,0 +1,52 @@
+step "Write \"Hello World!\"" {
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.RunOnServer = "true"
+            Octopus.Action.Script.ScriptBody = "Write-Host \"Hello World!\""
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "PowerShell"
+        }
+        worker_pool = "Default Worker Pool"
+
+        packages "HelloWinForms" {
+            acquisition_location = "Server"
+            feed = "Octopus Server (built-in)"
+            package_id = "HelloWinForms"
+            properties = {
+                Extract = "True"
+                Purpose = ""
+                SelectionMode = "immediate"
+            }
+        }
+    }
+}
+
+step "Transfer a Package" {
+    properties = {
+        Octopus.Action.TargetRoles = "FileServer"
+    }
+
+    action {
+        action_type = "Octopus.TransferPackage"
+        environments = ["Develop"]
+        is_disabled = true
+        properties = {
+            Octopus.Action.Package.DownloadOnTentacle = "False"
+            Octopus.Action.Package.FeedId = "Octopus Server (built-in)"
+            Octopus.Action.Package.PackageId = "HelloWinForms"
+            Octopus.Action.Package.TransferPath = "C:\\inetpub\\wwwroot\\builds"
+        }
+        worker_pool_variable = ""
+
+        packages {
+            acquisition_location = "Server"
+            feed = "Octopus Server (built-in)"
+            package_id = "HelloWinForms"
+            properties = {
+                SelectionMode = "immediate"
+            }
+        }
+    }
+}

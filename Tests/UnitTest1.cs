@@ -13,6 +13,24 @@ public class Tests
     {
     }
 
+    /// <summary>
+    /// Goal:
+    /// Input:
+    /// Ouput: 
+    /// </summary>
+    [Test]
+    public void RenameHelloWorldApp()
+    {
+        string workDir = @"%teamcity.build.checkoutDir%";
+        var fullFilePath = Directory.GetFiles(workDir, "*.exe", SearchOption.AllDirectories).FirstOrDefault();
+        
+        
+        
+        
+
+        Assert.Fail();
+    }
+    
     [Test]
     public void RenameAppxFile()
     {

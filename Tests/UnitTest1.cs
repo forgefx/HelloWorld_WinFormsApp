@@ -19,16 +19,52 @@ public class Tests
     /// Ouput: 
     /// </summary>
     [Test]
-    public void RenameHelloWorldApp()
+    public void CreateDateBasedVersion()
     {
+        Console.WriteLine("================== BEGIN ==================");
+        
+        var now = DateTime.UtcNow.AddHours(-4);
+        Console.WriteLine($"now: {now} (Eastern time)");
+
+        var year = now.Year.ToString();
+        var month = now.Month.ToString();
+        var day = now.Day.ToString();
+        var time = (now.Hour * 100) + now.Minute;
+        var version = $"{year}.{month}.{day}-{time}";
+  
+        // Write version to console.    
+        Console.WriteLine($"version: {version}");
+
+        Console.WriteLine("================== END ==================");
+        
+        Assert.IsNotNull(version);
+    }
+
+    [Test]
+    public void FindExeFile()
+    {
+        Console.WriteLine("================== BEGIN ==================");
+        
         string workDir = @"%teamcity.build.checkoutDir%";
         var fullFilePath = Directory.GetFiles(workDir, "*.exe", SearchOption.AllDirectories).FirstOrDefault();
-        
-        
-        
+        if (fullFilePath == null)
+        {
+            fullFilePath = @"C:\BuildAgent\Work\Foo\";
+        }
+        Console.WriteLine($"fullFilePath: {fullFilePath}");
         
 
-        Assert.Fail();
+        Console.WriteLine("================== END ==================");
+    }
+
+    [Test]
+    public void GetFileExtension()
+    {
+        var fileName = @"C:\foo\bar\test.exe";
+        Console.WriteLine($"fileName: {fileName}");
+        var extension = Path.GetExtension(fileName);
+        Console.WriteLine($"extension: {extension}");
+        Assert.AreEqual(".exe", extension);
     }
     
     [Test]
@@ -41,11 +77,18 @@ public class Tests
 
         var output = input;
         
+        // Note filename extension.
+        var ext = Path.GetExtension(input);
+        Console.WriteLine($"extension: {ext}");
+        
+        // Remove filename extension (.appx or .exe).
+        output = output.Replace(ext, "");
+        
         // Strip out "CBRND " from the beginning of the string.
         output = output.Replace("CBRND ", "");
         
         // Strip out "_ARM.appx" from the end of the string.
-        output = output.Replace("_ARM.appx", "");
+        output = output.Replace("_ARM", "");
         
         // Get last chunk of string, separated by, and including, "."
         var oldLastChunk = "." + output.Split('.').Last();
@@ -54,8 +97,8 @@ public class Tests
         var newLastChunk = "-" + output.Split('.').Last();
         output = output.Replace(oldLastChunk, newLastChunk);
         
-        // Restore .appx extension.
-        output = output + ".appx";
+        // Restore filename extension (.appx or .exe).
+        output = output + ext;
 
         // Verify values are as expected.
         Console.WriteLine($"{input} (input)");

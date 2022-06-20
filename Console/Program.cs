@@ -1,4 +1,6 @@
-﻿Console.WriteLine("===================================== DEBUG INFO =====================================");
+﻿using System.IO.Compression;
+
+Console.WriteLine("===================================== DEBUG INFO =====================================");
 Console.WriteLine("Environment.CurrentDirectory: {0}", Environment.CurrentDirectory);
 Console.WriteLine("Environment.SystemDirectory: {0}", Environment.SystemDirectory);
 Console.WriteLine("Environment.OSVersion: {0}", Environment.OSVersion);
@@ -65,4 +67,18 @@ File.Copy(sourceAppFile, targetAppFile, true);
 // Verify that the file was copied.
 var targetAppFileExists = File.Exists(targetAppFile);
 Console.WriteLine($"targetAppFileExists: {targetAppFileExists}");
+Console.WriteLine("");
+
+Console.WriteLine("=============================== CREATE ZIP PACKAGE ===============================");
+var fileToZip = targetAppFile;
+var zipFileName = targetAppFileName.Replace(".exe", ".zip");
+using (ZipArchive archive = ZipFile.Open(zipFileName, ZipArchiveMode.Create))
+{
+    archive.CreateEntryFromFile(fileToZip, Path.GetFileName(fileToZip));
+}
+Console.WriteLine($"fileToZip: {fileToZip}");
+Console.WriteLine($"zipFileName: {zipFileName}");
+// Verify that the file was created.
+var zipFileExists = File.Exists(zipFileName);
+Console.WriteLine($"zipFileExists: {zipFileExists}");
 Console.WriteLine("");

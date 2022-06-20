@@ -9,7 +9,7 @@ var isRunningLocally = machineName.Equals("AURORA-2021");
 Console.WriteLine("isRunningLocally: {0}", isRunningLocally);
 
 Console.WriteLine("===================================== CONSTANTS (FOR TEAMCITY) =====================================");
-string workDir = @"%teamcity.build.checkoutDir%";
+string workDir = Environment.CurrentDirectory;
 
 Console.WriteLine("===================================== CONSTANTS (FOR LOCAL TESTING) =====================================");
 if (isRunningLocally)

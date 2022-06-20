@@ -8,6 +8,15 @@ var machineName = Environment.MachineName; // Example: "AURORA-2021" vs "EC2AMAZ
 var isRunningLocally = machineName.Equals("AURORA-2021");
 Console.WriteLine("isRunningLocally: {0}", isRunningLocally);
 
+Console.WriteLine("===================================== CONSTANTS (FOR TEAMCITY) =====================================");
+string workDir = @"%teamcity.build.checkoutDir%";
+
+Console.WriteLine("===================================== CONSTANTS (FOR LOCAL TESTING) =====================================");
+if (isRunningLocally)
+{
+    workDir = @"C:\work";
+}
+
 Console.WriteLine("=============================== CALC DATE-BASED VERSION ===============================");
 var now = DateTime.UtcNow.AddHours(-4);
 var year = now.Year.ToString();
@@ -22,10 +31,25 @@ Console.WriteLine($"version: {version}");
 Console.WriteLine("=============================== TARGET APP FILE NAME ===============================");
 var appPrefix = "HelloTrainer";
 var appVersion = version; // From preceding section.
-var appExtension = "exe";
+var appExtension = ".exe";
 var targetAppFileName = $"{appPrefix}.{appVersion}{appExtension}";
 Console.WriteLine($"targetAppFileName: {targetAppFileName}");
 
 Console.WriteLine("=============================== LOCATE SOURCE APP FILE ===============================");
+var sourceAppFile = Directory.GetFiles(workDir, "*.exe", SearchOption.AllDirectories).FirstOrDefault();
+Console.WriteLine($"sourceAppFile: {sourceAppFile}");
+
+// Get just the path to the file.
+var sourceAppFilePath = Path.GetDirectoryName(sourceAppFile);
+Console.WriteLine($"sourceAppFilePath: {sourceAppFilePath}");
+
 
 Console.WriteLine("=============================== MOVE/RENAME APP FILE ===============================");
+// Copy sourceAppFileFullPath to targetAppFileName.
+var targetAppFile = Path.Combine(sourceAppFilePath, targetAppFileName);
+Console.WriteLine($"targetAppFile: {targetAppFile}");
+File.Copy(sourceAppFile, targetAppFile, true);
+
+// Verify that the file was copied.
+var targetAppFileExists = File.Exists(targetAppFile);
+Console.WriteLine($"targetAppFileExists: {targetAppFileExists}");

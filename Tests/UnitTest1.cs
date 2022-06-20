@@ -11,13 +11,13 @@ public class Tests
     [SetUp]
     public void Setup()
     {
-        Console.WriteLine("================== BEGIN ==================");
+        Console.WriteLine("=============================== BEGIN ===============================");
     }
 
     [TearDown]
     public void TearDown()
     {
-        Console.WriteLine("================== END ==================");
+        Console.WriteLine("=============================== END ===============================");
     }
 
     /// <summary>
@@ -28,7 +28,7 @@ public class Tests
     [Test]
     public void CreateDateBasedVersion()
     {
-        Console.WriteLine("================== CALC DATE-BASED VERSION ==================");
+        Console.WriteLine("=============================== CALC DATE-BASED VERSION ===============================");
         var now = DateTime.UtcNow.AddHours(-4);
         Console.WriteLine($"now: {now} (Eastern time)");
         var year = now.Year.ToString();
@@ -60,7 +60,7 @@ public class Tests
     {
         var version = "2022.6.18-1646";
         
-        Console.WriteLine("================== TARGET FILE NAME ==================");
+        Console.WriteLine("=============================== TARGET FILE NAME ===============================");
         var targetFileName = "";
         var prefix = "HelloTrainer_";
         var ver = version; // From section above.

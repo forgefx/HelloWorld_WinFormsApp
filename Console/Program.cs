@@ -2,13 +2,11 @@
 Console.WriteLine("Environment.CurrentDirectory: {0}", Environment.CurrentDirectory);
 Console.WriteLine("Environment.SystemDirectory: {0}", Environment.SystemDirectory);
 Console.WriteLine("Environment.OSVersion: {0}", Environment.OSVersion);
-Console.WriteLine("Environment.Version: {0}", Environment.Version);
-Console.WriteLine("Environment.CommandLine: {0}", Environment.CommandLine);
 Console.WriteLine("Environment.UserName: {0}", Environment.UserName);
-Console.WriteLine("Environment.UserDomainName: {0}", Environment.UserDomainName);
 Console.WriteLine("Environment.MachineName: {0}", Environment.MachineName);
-Console.WriteLine("Environment.WorkingSet: {0}", Environment.WorkingSet);
-Console.WriteLine("Environment.ProcessorCount: {0}", Environment.ProcessorCount);
+var machineName = Environment.MachineName; // Example: "AURORA-2021" vs "EC2AMAZON"
+var isRunningLocally = machineName.Equals("AURORA-2021");
+Console.WriteLine("isRunningLocally: {0}", isRunningLocally);
 
 Console.WriteLine("=============================== CALC DATE-BASED VERSION ===============================");
 var now = DateTime.UtcNow.AddHours(-4);

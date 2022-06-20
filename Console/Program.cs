@@ -1,0 +1,10 @@
+﻿Console.WriteLine("================== CALC DATE-BASED VERSION ==================");
+var now = DateTime.UtcNow.AddHours(-4);
+var year = now.Year.ToString();
+var month = now.Month.ToString();
+var day = now.Day.ToString();
+var hour = (now.Hour * 100).ToString();
+var minute = now.Minute.ToString();
+var time = (now.Hour * 100) + now.Minute;
+var version = $"{year}.{month}.{day}-{time}";
+Console.WriteLine($"version: {version}");

@@ -24,7 +24,15 @@ else
 {
     Console.WriteLine("N/A");
 }
+Console.WriteLine("");
 
+Console.WriteLine("===================================== LIST ALL FILES =====================================");
+Console.WriteLine($"List all files in: {workDir}");
+var files = Directory.GetFiles(workDir, "*.*", SearchOption.AllDirectories);
+foreach (var file in files)
+{
+    Console.WriteLine($"file: {file}");
+}
 Console.WriteLine("");
 
 Console.WriteLine("=============================== CALC DATE-BASED VERSION ===============================");

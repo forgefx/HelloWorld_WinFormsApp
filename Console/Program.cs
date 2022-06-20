@@ -41,6 +41,10 @@ var version = $"{year}.{month}.{day}-{time}";
 Console.WriteLine($"version: {version}");
 Console.WriteLine("");
 
+Console.WriteLine("=============================== STORE DATE-BASED VERSION ===============================");
+Console.WriteLine($"##teamcity[setParameter name='env.HoloTrainer.Version' value='{version}']");
+Console.WriteLine("");
+
 Console.WriteLine("=============================== TARGET APP FILE NAME ===============================");
 var appPrefix = "HelloTrainer";
 var appVersion = version; // From preceding section.

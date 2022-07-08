@@ -4,4 +4,4 @@ yak
 cow
 owl
 fox
-dog
+dogs

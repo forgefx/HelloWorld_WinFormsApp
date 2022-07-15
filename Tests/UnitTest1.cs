@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using NUnit.Framework;
-
+using HelloWorld;
 
 namespace Tests;
 
@@ -20,6 +20,14 @@ public class Tests
         Console.WriteLine("=============================== END ===============================");
     }
 
+    [Test]
+    public void TwoPlusTwoEqualsFour()
+    {
+        var expected = 4;
+        var actual = Calculator.Add(2, 2);
+        Assert.AreEqual(expected, actual, "Two plus two should equal four.");
+    }
+    
     /// <summary>
     /// Goal:
     /// Input:
@@ -72,7 +80,6 @@ public class Tests
         var expected = "HelloTrainer_2022.6.18-1646.exe";
         var actual = targetFileName;
         Assert.AreEqual(expected, actual);
-
     }
 
     [Test]

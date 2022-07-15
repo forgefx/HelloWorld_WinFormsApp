@@ -93,7 +93,7 @@ public class Tests
         Assert.IsNotEmpty(fullFilePath);
     }
 
-    [Test]
+    //[Test]
     public void CreateTextFile()
     {
         // Create a text file.

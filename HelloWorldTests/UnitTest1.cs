@@ -93,22 +93,22 @@ public class Tests
         Assert.IsNotEmpty(fullFilePath);
     }
 
-    [Test]
-    public void CreateTextFile()
-    {
-        // Create a text file.
-        string filePath = @"C:\temp\test.txt";
-        File.Create(filePath).Close();
-
-        // Write version to console.
-        string text = "Hello World!";
-        File.WriteAllText(filePath, text);
-
-        // Read the text file.
-        string textFromFile = File.ReadAllText(filePath);
-        Console.WriteLine($"textFromFile: {textFromFile}");
-        Assert.AreEqual(text, textFromFile);
-    }
+    // [Test]
+    // public void CreateTextFile()
+    // {
+    //     // Create a text file.
+    //     string filePath = @"C:\temp\test.txt";
+    //     File.Create(filePath).Close();
+    //
+    //     // Write version to console.
+    //     string text = "Hello World!";
+    //     File.WriteAllText(filePath, text);
+    //
+    //     // Read the text file.
+    //     string textFromFile = File.ReadAllText(filePath);
+    //     Console.WriteLine($"textFromFile: {textFromFile}");
+    //     Assert.AreEqual(text, textFromFile);
+    // }
 
     [Test]
     public void GetFileExtension()

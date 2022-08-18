@@ -4,11 +4,11 @@ XS:
   color: FF2D00
 S:
   name: size/S
-  lines: 100
+  lines: 10
   color: FF2D00
 M:
   name: size/M
-  lines: 300
+  lines: 20
   color: FF2D00
 L:
   name: size/L

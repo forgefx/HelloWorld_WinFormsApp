@@ -1,9 +1,3 @@
-*.* linguist-generated=true
 * linguist-generated=true
-*.meta linguist-generated=true
-*.html linguist-generated=true
 
-
-*.htm linguist-generated=false
-*.cs linguist-generated=false
 *.txt linguist-generated=false

@@ -1,1 +1,4 @@
+*.cs linguist-generated=false
 *.txt linguist-generated=false
+* linguist-generated=true
+*.cs linguist-generated=false

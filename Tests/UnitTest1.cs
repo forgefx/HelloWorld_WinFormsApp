@@ -20,6 +20,12 @@ public class Tests
         Console.WriteLine("=============================== END ===============================");
     }
 
+    [Test]
+    public void TwoPlusTwoEqualsFive()
+    {
+        Assert.AreEqual(5, 2 + 2);
+    }
+    
     /// <summary>
     /// Goal:
     /// Input:
